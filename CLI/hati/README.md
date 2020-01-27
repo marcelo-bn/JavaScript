@@ -10,3 +10,8 @@ A proposta inicial deste projeto é estudar as principais ferramentas disponibil
 ## Inicializando o projeto
 
 Para o desenvolvimento desse projeto, deve-se ter instalado em sua máquina o [NodeJs](https://nodejs.org/en/) assim como o [yarn](https://yarnpkg.com). Caso esteja utilizando o sistema operacional MacOs, é possível realizar o *download* do `yarn` utilizando o gerenciador de pacotes [Homebrew](https://brew.sh) com o seguinte comando: `brew install yarn`.
+
+Após a instalação do `yarn`, já é possível instalar o *Framework* Gluegun com o seguinte comando:
+
+`yarn global add gluegun`
+
