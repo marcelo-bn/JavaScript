@@ -17,9 +17,9 @@ Por último, foi adicionado ao servidor a função de inserir o horário (hora e
 
 Dentro do diretório do projeto, neste caso nomeado como `Chat`, foi necessário instalar as seguintes bibliotecas:
 
-1 - EJS: Template Engine padrão do NodeJs.
-2 - Express: Framework NodeJs para servidor back-end.
-3 - Socket.io: Meio de comunicação entre front e back-end.
+1. EJS: Template Engine padrão do NodeJs;
+2. Express: Framework NodeJs para servidor back-end;
+3. Socket.io: Meio de comunicação entre front e back-end.
 
 Antes da instalação recomenda-se realizar o seguinte comando dentro do diretório: `npm init -y`. Assim será criado no projeto o arquivo `package.json`. O comando abaixo irá instalar todas as bibliotecas:
 
