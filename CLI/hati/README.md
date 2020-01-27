@@ -27,5 +27,9 @@ Por fim, foi necessário instalar o módulo `fs-jetpack` para poder se trabalhar
 
 `npm install fs-jetpack`
 
-## Funções utilizáveis da CLI
+## Funções utilizáveis da CLI desenvolvida
+
+**1. Caminho do diretório atual:** `hati cwd`
+**2. Criar arquivo no diretório atual:** `hati create 'nome.extensao'`
+**3. Transformar dados em formato [JSON](https://www.json.org/json-en.html):** Com esse comando, o usuário fornecerá como parâmetro uma frase com a seguinte sintaxe: `atributo:valor`. Caso a frase tenha mais campos deve-se separá-los por vírgula como: `atributo:valor,atributo:valor`. 
 
