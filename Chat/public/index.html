@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <form id="chat">
+
+        <select name="txtusers" id="msgs" size="10"></select>
+        <select name="txtusers2" id="users" size="10"></select>
+        <input type="text" name="message" id="i2" placeholder="Mensagem">
+        <button type="submit">Enviar</button>
+
+    </form>
+
+    <script type="text/javascript">
+
+        var socket = io('http://localhost:3000');
+        // Variáveis para serem usadas como values dos selects
+        var index_msg = 0;
+        var index_users = 0;
+        // Nome do usuário
+        var login = "";
+        // Select referente à mensagens
+        var ms = document.getElementById('msgs');
+        var item = document.createElement('option');
+        // Select referente a usuários disponíveis
+        var us = document.getElementById('users');
+        var item2 = document.createElement('option');
+      
+        // Início da conexão
+        socket.on('connect', function(){ 
+            login = window.prompt('Qual o seu nome?');
+            var usuario = {
+                nome: login,
+                id: socket.id,
+            }
+            socket.emit('sendUser', usuario)
+        })
+        
+        // Evento para enviar mensagem
+        $('#chat').submit(function(event){
+            event.preventDefault();
+
+            var author = login;
+            var message = $('input[name=message]').val();
+
+            if(author.length && message.length){
+                var messageObject = {
+                    author: author,
+                    message: message,
+                }
+            }
+            $('input[name=message]').val('')
+            socket.emit('sendMessage', messageObject);
+
+        });
+        
+        // Renderiza as mensagens 
+        function render(msg, tipo){
+             
+            if(tipo == 0){
+                index_msg++;
+                console.log(msg)
+                $('#msgs').append(new Option(msg, index_msg));
+            }else{
+                index_users++;
+                $('#users').append(new Option(msg, index_users));
+            }
+               
+        }
+
+        // Recebe nova mensagem
+        socket.on('receivedMessage', function(msg){
+            render(msg, 0);
+        })
+
+        // Recebe todas as mensagens já trafegadas
+        socket.on('previousMessages', function(item){
+            for(msg of item){
+                render(msg, 0);
+            }
+        });
+
+        // Primeira vez que se conectou recebe a lista de todos os usuários 
+        socket.on('usersList', function(item){ 
+            for(msg of item){
+                if(msg != login){
+                   render(msg, 1);
+                }
+            }
+        });
+
+        // Atualiza lista de usuários disponíveis 
+        socket.on('atualizarUsers', function(item){
+            us.innerHTML = "";
+            for(msg of item){
+                if(msg != login){
+                   render(msg, 1);
+                }
+            }
+        })
+
+        // Recebe nome de um novo usuário que se conectou
+        socket.on('usersListSingle', function(item){ 
+            if(login != item){
+                render(item, 1);
+            }
+        });
+
+        // Retorna hora e minuto local da mensagem recebida
+        function dataLocal(){
+            let data = new Date();
+            hora = data.getHours();
+            min = data.getMinutes();
+            return `${hora}:${min} -`;
+        }
+
+    </script>
+
+</body>
+</html>
