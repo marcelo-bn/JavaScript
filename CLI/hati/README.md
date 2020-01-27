@@ -15,3 +15,10 @@ Após a instalação do `yarn`, já é possível instalar o *Framework* Gluegun 
 
 `yarn global add gluegun`
 
+Com o comando abaixo será criado um diretório (com o nome passado como parâmetro) com toda a estrutura para o desenvolvimento da CLI.
+
+ `gluegun new 'nomeDiretorio'`
+ 
+ Finalizando a criação do diretório, deve-se entrar nele realizar o seguinte comando que fará com o que os comandos criados na CLI sejam interpretados globalmente pela sua máquina.
+ 
+ `yarn link`
