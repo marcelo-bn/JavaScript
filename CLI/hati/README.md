@@ -31,6 +31,7 @@ Por fim, foi necessário instalar o módulo `fs-jetpack` para poder se trabalhar
 
 1. **Caminho do diretório atual:** `hati cwd`
 2. **Criar arquivo no diretório atual:** `hati create 'nome.extensao'`
-3. **Transformar dados em formato [JSON](https://www.json.org/json-en.html):** Com esse comando, o usuário fornecerá como parâmetro uma frase com a seguinte sintaxe: `atributo:valor` (caso a frase tenha mais campos deve-se separá-los por vírgula como: `atributo:valor,atributo:valor`) e terá como saída os dados em formato `JSON`: 
-`hati mkjson 'atributo:valor'` 
+3. **Transformar dados em formato [JSON](https://www.json.org/json-en.html):** `hati mkjson 'atributo:valor'`  
+Com esse comando, o usuário fornecerá como parâmetro uma frase com a seguinte sintaxe: `atributo:valor` (caso a frase tenha mais campos deve-se separá-los por vírgula como: `atributo:valor,atributo:valor`) e terá como saída os dados em formato `JSON`. 
+
 
