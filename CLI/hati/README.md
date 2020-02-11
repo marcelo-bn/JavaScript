@@ -1,7 +1,5 @@
 # CLI (Command Line Interface) utilizando NodeJs e Gluegun
 > Marcelo Bittencourt do Nascimento Filho
->
-> Janeiro de 2020
 
 ## Introdução
 
