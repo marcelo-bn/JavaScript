@@ -1,7 +1,5 @@
 ## Snake Game desenvolvido com JavaScript/HTML/CSS
 > Marcelo Bittencourt do Nascimento Filho
->
-> Janeiro de 2020
 
 # Objetivo
 
